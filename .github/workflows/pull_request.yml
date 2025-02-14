@@ -1,1 +1,17 @@
+name: Pull Request Workflow
 
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Ejecutar pruebas
+        run: echo "Pull Request Workflow running..."
