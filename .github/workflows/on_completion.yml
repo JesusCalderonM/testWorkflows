@@ -1,0 +1,16 @@
+name: Workflow Dependiente
+
+on:
+  workflow_run:
+    workflows: ["Pull Request Workflow"]
+    types:
+      - completed
+
+jobs:
+  follow_up:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Notificar éxito
+        run: echo "El workflow de Pull Request se completó exitosamente."
